@@ -1,0 +1,108 @@
+/*
+.main-header .logo {
+  font-family: "Georgia", Times, "Times New Roman", serif;
+  font-weight: bold;
+  font-size: 24px;
+  background-color: white;
+  boder-color: transparent;
+}
+
+.main-header .logo:hover {
+  font-family: "Georgia", Times, "Times New Roman", serif;
+  font-weight: bold;
+  font-size: 24px;
+  background-color: white;
+  boder-color: transparent;
+}
+
+.main-header .navbar .navbar-static-top {
+  color: #fffffc;
+  background-color: #fffffc;
+}
+
+.skin-black .main-header {
+  background-color: #377EB8;
+}
+*/
+
+.skin-black .main-header {
+  position: fixed;
+  width: 100%;
+  overflow: visible;
+}
+
+.skin-black .main-header .logo {
+  font-family: "RIDIBatang";
+  font-weight: bold;
+  font-size: 24px;
+  color: #fff;
+  background-color: #077FC0; /* #377EB8 */
+  border-color: transparent;
+}
+
+.skin-black .main-header .logo:hover {
+  font-family: "RIDIBatang";
+  font-weight: bold;
+  font-size: 24px;
+  color: #333;
+  background-color: #077FC0;
+  border-color: transparent;
+}
+
+.skin-black .main-header .navbar {
+  background-color: #077FC0;
+}
+
+.skin-black .main-header .navbar > .sidebar-toggle {
+  color: #333;
+  border-color: transparent;
+}
+
+.skin-black .left-side, .skin-black .wrapper {
+  border-color: transparent;
+  background-color: #222d32;
+}
+
+.skin-black .main-sidebar {
+  border-color: transparent;
+  background-color: #222d32;
+  position: fixed;
+  overflow: visible;
+}
+
+.skin-black .content {
+  padding-top: 60px; 
+} /* for fixed navbar */
+
+.skin-black .box-body {
+  font-family: "RIDIBatang";
+  font-size: 15px;
+  padding-left: 36px;
+  padding-right: 36px;
+}
+
+.skin-black h1 {
+  font-family: "RIDIBatang";
+  font-weight: bold;
+}
+
+.skin-black h2 {
+  font-family: "RIDIBatang";
+  font-weight: bold;
+}
+
+.skin-black h3 {
+  font-family: "RIDIBatang";
+  font-weight: bold;
+}
+
+.skin-black h4 {
+  font-family: "RIDIBatang";
+  font-weight: bold;
+}
+
+.skin-black p, .skin-black li, .skin-black ul {
+  font-family: "RIDIBatang";
+}
+
+.skin-black .markdown-text
