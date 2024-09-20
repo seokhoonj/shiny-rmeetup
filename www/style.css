@@ -25,6 +25,13 @@
 }
 */
 
+@font-face {
+    font-family: 'RIDIBatang';
+    src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_twelve@1.0/RIDIBatang.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
 .skin-black .main-header {
   position: fixed;
   width: 100%;

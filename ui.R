@@ -11,12 +11,16 @@ ui <- dashboardPage(
   skin = "black",
   title = "R Meetup",
 
+# . -----------------------------------------------------------------------
+
 # ui - header -------------------------------------------------------------
   
   dashboardHeader(
     title = span("알 미트업, 주석훈"),
     titleWidth = 250
   ), # dashboardHeader
+
+# . -----------------------------------------------------------------------
 
 # ui - sidebar ------------------------------------------------------------
   
@@ -25,17 +29,21 @@ ui <- dashboardPage(
     
     sidebarMenu(
       id = "sidebarId",
-      
+
+# ui - sidebar - presentation ---------------------------------------------
+
       menuItem(
-        text = "Package Status",
-        tabName = "pkg_stts_tab",
+        text = "Presentation",
+        tabName = "pkg_pt_tab",
         startExpanded = TRUE,
-        menuSubItem("Top Downloads", tabName = "pkg_stts_tab_top_dl"),
-        menuSubItem("Productivity" , tabName = "pkg_stts_tab_productivity"),
-        menuSubItem("Examples"     , tabName = "pkg_stts_tab_ex"),
-        menuSubItem("KOSIS"        , tabName = "pkg_stts_tab_kosis")
+        menuSubItem("Top Downloads", tabName = "pkg_pt_tab_top_pkg"),
+        menuSubItem("Productivity" , tabName = "pkg_pt_tab_productivity"),
+        menuSubItem("Environment"  , tabName = "pkg_pt_tab_env", selected = TRUE),
+        menuSubItem("KOSIS"        , tabName = "pkg_pt_tab_kosis")
       ),
       
+# ui - sidebar - structure ------------------------------------------------
+
       menuItem(
         text = "Package Structure",
         tabName = "pkg_strt_tab",
@@ -45,16 +53,20 @@ ui <- dashboardPage(
         menuSubItem("R"          , tabName = "pkg_strt_tab_r"),
         menuSubItem("man"        , tabName = "pkg_strt_tab_man")
       ),
+
+# ui - sidebar - development ----------------------------------------------
       
       menuItem(
         text = "Package Development",
         tabName = "pkg_dev_tab",
         startExpanded = TRUE,
         menuSubItem("usethis" , tabName = "pkg_dev_tab_usethis"),
-        menuSubItem("roxygen2", tabName = "pkg_dev_tab_roxygen"),
+        menuSubItem("roxygen2", tabName = "pkg_dev_tab_roxygen2"),
         menuSubItem("devtools", tabName = "pkg_dev_tab_devtools"),
         menuSubItem("testthat", tabName = "pkg_dev_tab_testthat")
       ),
+
+# ui - sidebar - extension ------------------------------------------------
       
       menuItem(
         text = "Extending R package",
@@ -65,17 +77,21 @@ ui <- dashboardPage(
         menuSubItem("ggplot2", tabName = "pkg_ext_tab_gg"),
         menuSubItem("Shiny"  , tabName = "pkg_ext_tab_shiny")
       ),
+
+# ui - sidebar - reference ------------------------------------------------
       
       menuItem(
-        text = "Summary",
-        tabName = "pkg_smry_tab",
+        text = "Reference",
+        tabName = "pkg_ref_tab",
         startExpanded = TRUE,
-        menuSubItem("Summary"  , tabName = "pkg_smry_tab_smry"),
-        menuSubItem("Reference", tabName = "pkg_smry_tab_ref")
+        menuSubItem("Website", tabName = "pkg_ref_tab_web")
       )
       
     ) # sidebarMenu
+    
   ), # dashboardSidebar
+
+# . -----------------------------------------------------------------------
 
 # ui - body ---------------------------------------------------------------
 
@@ -89,15 +105,17 @@ ui <- dashboardPage(
     useShinyjs(),
     
     tabItems(
-      
+
+# ui - body - presentation ------------------------------------------------
+   
       tabItem(
-        tabName = "pkg_stts_tab_top_dl",
+        tabName = "pkg_pt_tab_top_pkg",
         fluidPage(
           fluidRow(
             column(
               width = 12,
               resultBox(
-                plotOutput("pkg_stts_tab_top_dl_plot") %>% withSpinner(),
+                plotOutput("pkg_pt_tab_top_pkg_plot") %>% withSpinner(),
                 includeMarkdown(
                   path = "contents/package_status.md"
                 )
@@ -108,7 +126,7 @@ ui <- dashboardPage(
       ),
       
       tabItem(
-        tabName = "pkg_stts_tab_productivity",
+        tabName = "pkg_pt_tab_productivity",
         fluidPage(
           fluidRow(
             column(
@@ -124,14 +142,14 @@ ui <- dashboardPage(
       ),
       
       tabItem(
-        tabName = "pkg_stts_tab_ex",
+        tabName = "pkg_pt_tab_env",
         fluidPage(
           fluidRow(
             column(
               width = 12,
               resultBox(
                 includeMarkdown(
-                  path = "contents/package_examples.md"
+                  path = "contents/development_environment.md"
                 )
               )
             )
@@ -140,7 +158,7 @@ ui <- dashboardPage(
       ),
       
       tabItem(
-        tabName = "pkg_stts_tab_kosis",
+        tabName = "pkg_pt_tab_kosis",
         fluidPage(
           fluidRow(
             column(
@@ -154,7 +172,9 @@ ui <- dashboardPage(
           )
         )
       ),
-      
+
+# ui - body - structure ---------------------------------------------------
+   
       tabItem(
         tabName = "pkg_strt_tab_descr",
         fluidPage(
@@ -212,6 +232,156 @@ ui <- dashboardPage(
               resultBox(
                 includeMarkdown(
                   path = "contents/man_folder.md"
+                )
+              )
+            )
+          )
+        )
+      ),
+
+# ui - body - development -------------------------------------------------
+     
+      tabItem(
+        tabName = "pkg_dev_tab_usethis",
+        fluidPage(
+          fluidRow(
+            column(
+              width = 12,
+              resultBox(
+                includeMarkdown(
+                  path = "contents/usethis_package.md"
+                )
+              )
+            )
+          )
+        )
+      ),
+      
+      tabItem(
+        tabName = "pkg_dev_tab_roxygen2",
+        fluidPage(
+          fluidRow(
+            column(
+              width = 12,
+              resultBox(
+                includeMarkdown(
+                  path = "contents/roxygen2_package.md"
+                )
+              )
+            )
+          )
+        )
+      ),
+      
+      tabItem(
+        tabName = "pkg_dev_tab_devtools",
+        fluidPage(
+          fluidRow(
+            column(
+              width = 12,
+              resultBox(
+                includeMarkdown(
+                  path = "contents/devtools_package.md"
+                )
+              )
+            )
+          )
+        )
+      ),
+      
+      tabItem(
+        tabName = "pkg_dev_tab_testthat",
+        fluidPage(
+          fluidRow(
+            column(
+              width = 12,
+              resultBox(
+                includeMarkdown(
+                  path = "contents/testthat_package.md"
+                )
+              )
+            )
+          )
+        )
+      ),
+
+# ui - body - extension ---------------------------------------------------
+      
+      tabItem(
+        tabName = "pkg_ext_tab_c",
+        fluidPage(
+          fluidRow(
+            column(
+              width = 12,
+              resultBox(
+                includeMarkdown(
+                  path = "contents/c_extension.md"
+                )
+              )
+            )
+          )
+        )
+      ),
+      
+      tabItem(
+        tabName = "pkg_ext_tab_py",
+        fluidPage(
+          fluidRow(
+            column(
+              width = 12,
+              resultBox(
+                includeMarkdown(
+                  path = "contents/python_extension.md"
+                )
+              )
+            )
+          )
+        )
+      ),
+
+      tabItem(
+        tabName = "pkg_ext_tab_gg",
+        fluidPage(
+          fluidRow(
+            column(
+              width = 12,
+              resultBox(
+                includeMarkdown(
+                  path = "contents/ggplot2_extension.md"
+                )
+              )
+            )
+          )
+        )
+      ),
+
+      tabItem(
+        tabName = "pkg_ext_tab_shiny",
+        fluidPage(
+          fluidRow(
+            column(
+              width = 12,
+              resultBox(
+                includeMarkdown(
+                  path = "contents/shiny_extension.md"
+                )
+              )
+            )
+          )
+        )
+      ),
+
+# ui - body - reference ---------------------------------------------------
+
+      tabItem(
+        tabName = "pkg_ref_tab_web",
+        fluidPage(
+          fluidRow(
+            column(
+              width = 12,
+              resultBox(
+                includeMarkdown(
+                  path = "contents/reference_web.md"
                 )
               )
             )
