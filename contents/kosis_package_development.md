@@ -31,7 +31,7 @@ usethis::create_package("path/to/your/kosis")
 
 이 명령어는 패키지의 기본 구조를 자동으로 생성합니다. `DESCRIPTION`, `NAMESPACE`, `R/` 등의 기본 파일과 디렉토리가 설정됩니다. 잘 아시다시피 사실 이 과정은 RStudio에서 새로운 프로젝트를 생성하는 것으로 대체할 수 있습니다. 최종적으로는 다음과 같은 구조를 갖습니다.
 
-![alt text](../images/package_tree.png){: width="70%"}
+![alt text](../images/kosis_tree.png){: width="70%"}
 
 ## 3. 패키지 메타데이터 설정
 

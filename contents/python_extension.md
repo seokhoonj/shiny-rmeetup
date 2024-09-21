@@ -42,7 +42,9 @@ class Translator:
         
     ...
 ```
-이 Python 파일을 `papagor/inst/python/papago/translator.py`로 저장합니다 .
+이 Python 파일을 `papagor/inst/python/papago/translator.py`로 저장합니다. 그리고 최종적으로는 다음과 같은 구조를 갖게 됩니다.
+
+![alt text](../images/papagor_tree.png){: width="70%"}
 
 ## Python 클래스를 활용할 R 함수 작성
 
