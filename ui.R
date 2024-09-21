@@ -36,9 +36,10 @@ ui <- dashboardPage(
         text = "Presentation",
         tabName = "pkg_pt_tab",
         startExpanded = TRUE,
+        menuSubItem("Introduction" , tabName = "pkg_pt_tab_intro", selected = TRUE),
         menuSubItem("Top Downloads", tabName = "pkg_pt_tab_top_pkg"),
         menuSubItem("Productivity" , tabName = "pkg_pt_tab_productivity"),
-        menuSubItem("Environment"  , tabName = "pkg_pt_tab_env", selected = TRUE),
+        menuSubItem("Environment"  , tabName = "pkg_pt_tab_env"),
         menuSubItem("KOSIS"        , tabName = "pkg_pt_tab_kosis")
       ),
       
@@ -96,6 +97,60 @@ ui <- dashboardPage(
 # ui - body ---------------------------------------------------------------
 
   dashboardBody(
+    tags$head(
+      tags$style(
+        HTML(
+        "
+        .multicol {
+            /*font-size:12px;*/
+            -webkit-column-count: 2; /* Chrome, Safari, Opera */
+            -moz-column-count: 2;    /* Firefox */
+            column-count: 2;
+            -moz-column-fill: auto;
+            -column-fill: auto;
+        }
+        section.sidebar .shiny-input-container {
+            padding: 9px 15px 0px 15px;
+            white-space: normal;
+        }
+        div.checkbox {
+            margin-top: 10px;
+        }
+  
+        /* tabBox background */
+        .nav-tabs-custom {
+            border: 1px solid #00a65a;
+        }
+        .nav-tabs-custom > .nav-tabs {
+            background: #00a65a;
+            border-top-right-radius: 3px;
+            border-top-left-radius: 3px;
+        }
+        .nav-tabs-custom > .nav-tabs > li.header {
+            color: white;
+        }
+        .nav-tabs-custom > .tab-content {
+            padding: 10px;
+            border-bottom-color: #00a65a;
+            border-bottom-right-radius: 3px;
+            border-bottom-left-radius: 3px;
+        }
+        .nav-tabs-custom .nav-tabs li.active {
+            border-top-color: #00a65a;
+        }
+        .nav-tabs-custom > .nav-tabs > li > a {
+            color: #FFF;
+        }
+        .nav-tabs-custom > .nav-tabs > li.active > a, .nav-tabs-custom > .nav-tabs > li.active:hover > a {
+            color: #00a65a;
+        }
+        /* .dataTables_length {} */
+              .dt-buttons {
+            margin-left: 10px;
+        }"
+        )
+      )
+    ),
     tags$link(
       rel = "stylesheet",
       type = "text/css",
@@ -107,7 +162,21 @@ ui <- dashboardPage(
     tabItems(
 
 # ui - body - presentation ------------------------------------------------
-   
+      
+      tabItem(
+        tabName = "pkg_pt_tab_intro",
+        fluidPage(
+          fluidRow(
+            column(
+              width = 12,
+              resultBox(
+                slickROutput("pkg_pt_tab_intro_pt") %>% withSpinner()
+              )
+            )
+          )
+        )
+      ),
+
       tabItem(
         tabName = "pkg_pt_tab_top_pkg",
         fluidPage(
@@ -363,9 +432,31 @@ ui <- dashboardPage(
               width = 12,
               resultBox(
                 includeMarkdown(
-                  path = "contents/shiny_extension.md"
+                  path = "contents/shiny_extension1.md"
+                ),
+                conditionBox(
+                  width = 13,
+                  title = "shinymodules selectUI & dynSelectServer",
+                  fluidRow(
+                    column(width = 4, shinymodules::selectUI(id = "new_id1", "vs")),
+                    column(width = 4, shinymodules::selectUI(id = "new_id2", "am")),
+                    column(width = 4, shinymodules::selectUI(id = "new_id3", "cyl"))
+                  )
+                ),
+                includeMarkdown(
+                  path = "contents/shiny_extension2.md"
                 )
               )
+              # conditionBox(title = "Shiny Modules",
+              #   fluidRow(
+              #     column(width = 4, shinymodules::selectUI(id = "mtcars_vs", "vs")),
+              #     column(width = 4, shinymodules::selectUI(id = "mtcars_am", "am")),
+              #     column(width = 4, shinymodules::scalesUI(id = "mtcars_scales"))
+              #   ),
+              #   fluidRow(
+              #     column(width = 12, plotOutput("pkg_ext_tab_shiny_plot"))
+              #   )
+              # )
             )
           )
         )

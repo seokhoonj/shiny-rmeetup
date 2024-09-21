@@ -148,7 +148,7 @@ kosis.getKey <- function() {
     apiKey <- Sys.getenv("KOSIS_API_KEY")
     if (apiKey == "") {
         stop("Please run this code to provide your KOSIS API Key: kosis.setKey('your_api_key').", 
-            call. = FALSE)
+             call. = FALSE)
     }
     return(apiKey)
 }

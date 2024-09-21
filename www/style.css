@@ -65,7 +65,7 @@
   border-color: transparent;
 }
 
-.skin-black .left-side, .skin-black .wrapper {
+.skin-black .left-side, {
   border-color: transparent;
   background-color: #222d32;
 }
@@ -77,8 +77,18 @@
   overflow: visible;
 }
 
+.skin-black .wrapper {
+  border-color: transparent;
+  background-color: transparent; /* #222d32; */
+}
+
+.skin-black .content-wrapper {
+  background-color: transparent;  /* 원하는 색상으로 변경하세요 */
+}
+
 .skin-black .content {
-  padding-top: 60px; 
+  padding-top: 60px;
+  background-color: transparent;
 } /* for fixed navbar */
 
 .skin-black .box-body {
@@ -88,22 +98,7 @@
   padding-right: 36px;
 }
 
-.skin-black h1 {
-  font-family: "RIDIBatang";
-  font-weight: bold;
-}
-
-.skin-black h2 {
-  font-family: "RIDIBatang";
-  font-weight: bold;
-}
-
-.skin-black h3 {
-  font-family: "RIDIBatang";
-  font-weight: bold;
-}
-
-.skin-black h4 {
+.skin-black h1, .skin-black h2, .skin-black h3, .skin-black h4 {
   font-family: "RIDIBatang";
   font-weight: bold;
 }
@@ -111,5 +106,3 @@
 .skin-black p, .skin-black li, .skin-black ul {
   font-family: "RIDIBatang";
 }
-
-.skin-black .markdown-text
