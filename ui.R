@@ -170,7 +170,7 @@ ui <- dashboardPage(
             column(
               width = 12,
               resultBox(
-                slickROutput("pkg_pt_tab_intro_pt") %>% withSpinner()
+                slickROutput("pkg_pt_tab_intro_pt") |> withSpinner()
               )
             )
           )
@@ -184,7 +184,7 @@ ui <- dashboardPage(
             column(
               width = 12,
               resultBox(
-                plotOutput("pkg_pt_tab_top_pkg_plot") %>% withSpinner(),
+                plotOutput("pkg_pt_tab_top_pkg_plot") |> withSpinner(),
                 includeMarkdown(
                   path = "contents/package_status.md"
                 )
