@@ -1,7 +1,6 @@
 
 source("library.R")
 source("function.R")
-source("global.R")
 options(shiny.maxRequestSize = 50*1024^2)
 options(scipen = 999)
 
@@ -73,7 +72,7 @@ ui <- dashboardPage(
         text = "Extending R package",
         tabName = "pkg_ext_tab",
         startExpanded = TRUE,
-        menuSubItem("C, C++" , tabName = "pkg_ext_tab_c"),
+        menuSubItem("C/C++" , tabName = "pkg_ext_tab_c"),
         menuSubItem("Python" , tabName = "pkg_ext_tab_py"),
         menuSubItem("ggplot2", tabName = "pkg_ext_tab_gg"),
         menuSubItem("Shiny"  , tabName = "pkg_ext_tab_shiny")
