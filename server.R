@@ -8,7 +8,7 @@ server <- function(input, output, session) {
     slickR(imgs, width = "95%", height = 700)
   })
   
-  output$pkg_pt_tab_top_pkg_plot <- renderPlot({
+  output$pkg_pt_tab_status_plot <- renderPlot({
     pkg_top <- cranlogs::cran_top_downloads(when = "last-month")
     pkg_top$rank <- as.factor(pkg_top$rank)
     ggbar(pkg_top, x = rank, y = count, fill = rank,
@@ -16,10 +16,17 @@ server <- function(input, output, session) {
       scale_y_comma() +
       coord_flip() +
       scale_x_limit_reverse(pkg_top$rank) +
-      labs(title = "Cran Top Downloads (Monthly)") +
+      labs(title = "CRAN Top Downloads (Monthly)") +
       theme_shiny(x.angle = 45)
   })
 
+  output$pkg_pt_tab_kosis_md <- renderUI({
+    tags$div(
+      includeMarkdown(path = "contents/kosis.md"),
+      tags$script("hljs.highlightAll();")  # Re-initialize after rendering
+    )
+  })
+  
 # . -----------------------------------------------------------------------
   
 # server - extension ------------------------------------------------------

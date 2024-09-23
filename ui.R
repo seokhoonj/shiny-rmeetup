@@ -36,9 +36,9 @@ ui <- dashboardPage(
         tabName = "pkg_pt_tab",
         startExpanded = TRUE,
         menuSubItem("Introduction" , tabName = "pkg_pt_tab_intro", selected = TRUE),
-        menuSubItem("Top Downloads", tabName = "pkg_pt_tab_top_pkg"),
+        menuSubItem("Status"       , tabName = "pkg_pt_tab_status"),
         menuSubItem("Productivity" , tabName = "pkg_pt_tab_productivity"),
-        menuSubItem("Environment"  , tabName = "pkg_pt_tab_env"),
+        menuSubItem("Environment"  , tabName = "pkg_pt_tab_environment"),
         menuSubItem("KOSIS"        , tabName = "pkg_pt_tab_kosis")
       ),
       
@@ -97,6 +97,12 @@ ui <- dashboardPage(
 
   dashboardBody(
     tags$head(
+      # tags$link(rel = "stylesheet", href = "https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css"),
+      # tags$script(src = "https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"),
+      tags$link(rel = "stylesheet", href = "https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/styles/default.min.css"),
+      tags$script(src = "https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/highlight.min.js"),
+      tags$script("hljs.highlightAll();"),  # Initialize highlight.js
+      
       tags$style(
         HTML(
         "
@@ -155,7 +161,6 @@ ui <- dashboardPage(
       type = "text/css",
       href = "style.css"
     ),
-    
     useShinyjs(),
     
     tabItems(
@@ -177,15 +182,15 @@ ui <- dashboardPage(
       ),
 
       tabItem(
-        tabName = "pkg_pt_tab_top_pkg",
+        tabName = "pkg_pt_tab_status",
         fluidPage(
           fluidRow(
             column(
               width = 12,
               resultBox(
-                plotOutput("pkg_pt_tab_top_pkg_plot") |> withSpinner(),
+                plotOutput("pkg_pt_tab_status_plot") |> withSpinner(),
                 includeMarkdown(
-                  path = "contents/package_status.md"
+                  path = "contents/status.md"
                 )
               )
             )
@@ -201,7 +206,7 @@ ui <- dashboardPage(
               width = 12,
               resultBox(
                 includeMarkdown(
-                  path = "contents/package_productivity.md"
+                  path = "contents/productivity.md"
                 )
               )
             )
@@ -210,14 +215,14 @@ ui <- dashboardPage(
       ),
       
       tabItem(
-        tabName = "pkg_pt_tab_env",
+        tabName = "pkg_pt_tab_environment",
         fluidPage(
           fluidRow(
             column(
               width = 12,
               resultBox(
                 includeMarkdown(
-                  path = "contents/development_environment.md"
+                  path = "contents/environment.md"
                 )
               )
             )
@@ -231,10 +236,8 @@ ui <- dashboardPage(
           fluidRow(
             column(
               width = 12,
-              resultBox(
-                includeMarkdown(
-                  path = "contents/kosis_package_development.md"
-                )
+              resultBox(title = "생산성 향상을 위한 나만의 R 패키지 빌드 (Please wait...)",
+                uiOutput("pkg_pt_tab_kosis_md") |> withSpinner()
               )
             )
           )

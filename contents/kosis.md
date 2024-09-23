@@ -58,7 +58,7 @@ usethis::use_mit_license()
 
 그 밖에 필요한 패키지를 import하는 코드를 DESCRIPTION 파일에 직접 작성해 넣도록 합니다. Package Version을 괄호안에 추가하는 것이 필수는 아니지만 추후 문제 해결의 용이성을 위해 버전을 기록해 두는 것이 좋습니다. `packageVersion("data.table")` 코드로 현재 버전을 확인할 수 있습니다.
 
-``` r
+``` plaintext
 Imports: 
     data.table (>= 1.13.0),
     httr (>= 1.4.3),
@@ -68,7 +68,7 @@ Imports:
 
 참고로, 배포된 패키지만 활용해서 패키지를 개발할 수 있는 것은 아닙니다. KOSIS 패키지를 개발하는 데 필요하진 않지만 다음 코드를 활용하면 배포되지 않은 패키지도 활용할 수 있습니다.
 
-``` r
+``` plaintext
 Remotes:
     github::seokhoonj/jaid,
     github::seokhoonj/ggshort
