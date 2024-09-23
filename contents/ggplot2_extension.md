@@ -1,8 +1,6 @@
-
 # R 패키지 개발시 `ggplot2` 사용법
 
-R 패키지 개발 시 `ggplot2`를 이용한 함수를 작성할 때, 우리는 먼저 `rlang` 패키지에 대해서 이해해야 합니다. `rlang` 패키지는 변수의 범위와 참조를 안전하게 관리할 수 있도록 돕는 중요한 도구입니다. 특히, `enquo()`, `enquos()`, `!!`, `!!!` 함수는 비표준 평가(Non-standard evaluation, NSE)를 안전하게 다룰 수 있게 해주어, `ggplot2`와 같은 그래픽 함수와의 통합을 쉽게 만듭니다. <br>
-R을 활용하면서 기초함수에서 가장 빈번하게 나오는 비표준 평가 예시는 `deparse(substitute(x))` 입니다. 하지만 이 표현을 재사용성을 위해 함수로 만들고 다른 함수안에서 사용하게 되면 그냥 x가 나오는 황당한 경험을 하게 됩니다. 그래서 이를 해결하기 위해 제가 아주 오래전 고안하게 된 표현은 다음과 같은 복잡한 형태였습니다.
+R 패키지 개발 시 `ggplot2`를 이용한 함수를 작성할 때, 우리는 먼저 `rlang` 패키지에 대해서 이해해야 합니다. `rlang` 패키지는 변수의 범위와 참조를 안전하게 관리할 수 있도록 돕는 중요한 도구입니다. 특히, `enquo()`, `enquos()`, `!!`, `!!!` 함수는 비표준 평가(Non-standard evaluation, NSE)를 안전하게 다룰 수 있게 해주어, `ggplot2`와 같은 그래픽 함수와의 통합을 쉽게 만듭니다. <br> R을 활용하면서 기초함수에서 가장 빈번하게 나오는 비표준 평가 예시는 `deparse(substitute(x))` 입니다. 하지만 이 표현을 재사용성을 위해 함수로 만들고 다른 함수안에서 사용하게 되면 그냥 x가 나오는 황당한 경험을 하게 됩니다. 그래서 이를 해결하기 위해 제가 아주 오래전 고안하게 된 표현은 다음과 같은 복잡한 형태였습니다.
 
 ``` r
 f <- function(x) {
@@ -38,13 +36,14 @@ f2 <- function(x) {
 # > f2(t)
 # [1] "t"
 ```
+
 참고로 `desub2` 함수는 일반적인 R 환경에서는 잘 되지만, Shiny Application에서는 또다른 `namespace`를 고려해야 하므로 생각한대로 작동하지 않습니다. 그런 측면에서 `rlang`은 R 생태계에서 굉장히 훌륭한 대안으로서의 역할을 하게 된 것입니다.
 
 ## `rlang`의 역할
 
-- **비표준 평가(NSE) 처리**: `ggplot2`와 같은 그래픽 패키지들은 변수 이름을 직접 인자로 받아 사용하는 비표준 평가 방식을 사용합니다. 이 때, `rlang` 패키지의 `enquo()`와 `enquos()`를 사용하여 함수 내에서 변수를 안전하게 참조하고, 코드가 의도한 대로 동작하도록 할 수 있습니다.
-- **동적 변수 처리**: 사용자가 지정한 변수 이름을 함수 내에서 동적으로 인식하고 사용할 수 있게 해줍니다.
-- **명확한 오류 처리**: 인자를 quosure로 변환하여, 변수의 유효성을 쉽게 검증할 수 있도록 돕습니다.
+-   **비표준 평가(NSE) 처리**: `ggplot2`와 같은 그래픽 패키지들은 변수 이름을 직접 인자로 받아 사용하는 비표준 평가 방식을 사용합니다. 이 때, `rlang` 패키지의 `enquo()`와 `enquos()`를 사용하여 함수 내에서 변수를 안전하게 참조하고, 코드가 의도한 대로 동작하도록 할 수 있습니다.
+-   **동적 변수 처리**: 사용자가 지정한 변수 이름을 함수 내에서 동적으로 인식하고 사용할 수 있게 해줍니다.
+-   **명확한 오류 처리**: 인자를 quosure로 변환하여, 변수의 유효성을 쉽게 검증할 수 있도록 돕습니다.
 
 ## `enquo()`와 `enquos()` 사용법
 
@@ -56,7 +55,7 @@ f2 <- function(x) {
 
 아래는 `enquo()`를 사용하여 `ggplot2`의 함수에서 동적으로 변수를 매핑하는 예시입니다.
 
-```r
+``` r
 # 예제 함수: 단일 변수를 ggplot에서 사용
 plot_single_variable <- function(data, x_var) {
   # 인자를 quosure로 변환
@@ -81,7 +80,7 @@ plot_single_variable(mtcars, mpg)
 
 아래는 `enquos()`를 사용하여 다수의 변수를 ggplot의 `aes()`에 동적으로 매핑하는 함수입니다.
 
-```r
+``` r
 # 예제 함수: 여러 변수를 ggplot에서 사용
 plot_multiple_variables <- function(data, ...) {
   # 인자를 quosure 리스트로 변환
@@ -99,17 +98,17 @@ plot_multiple_variables(mtcars, mpg, wt)
 
 ### 3. `!!` (Bang-Bang 연산자)
 
-- **역할**: `!!` 연산자는 quosure로 인용된 인자를 평가하여 실제 값으로 변환합니다. 이는 `ggplot2`와 같은 함수에서 변수를 동적으로 참조할 때 필요합니다.
+-   **역할**: `!!` 연산자는 quosure로 인용된 인자를 평가하여 실제 값으로 변환합니다. 이는 `ggplot2`와 같은 함수에서 변수를 동적으로 참조할 때 필요합니다.
 
 ### 4. `!!!` (Bang-Bang-Bang 연산자)
 
-- **역할**: `!!!` 연산자는 여러 개의 인자나 리스트를 펼쳐서 함수에 전달할 때 사용됩니다. 주로 `enquos()`와 함께 사용되며, 여러 개의 quosure를 한 번에 풀어서 함수에 전달합니다.
+-   **역할**: `!!!` 연산자는 여러 개의 인자나 리스트를 펼쳐서 함수에 전달할 때 사용됩니다. 주로 `enquos()`와 함께 사용되며, 여러 개의 quosure를 한 번에 풀어서 함수에 전달합니다.
 
 #### 사용 예시
 
 아래 예시는 `!!!` 연산자를 사용하여 `aes()` 함수에 여러 변수를 동적으로 전달하는 방법을 보여줍니다.
 
-```r
+``` r
 # 예제 함수: 여러 변수를 ggplot에서 사용
 plot_with_multiple_aes <- function(data, ...) {
   # 인자를 quosure 리스트로 변환
@@ -124,17 +123,19 @@ plot_with_multiple_aes <- function(data, ...) {
 # 함수 사용 예시
 plot_with_multiple_aes(mtcars, mpg, wt)
 ```
+
 ### 5. 요약
 
-- `enquo()`: 단일 변수를 quosure로 변환하여 안전하게 참조.
-- `enquos()`: 다수의 변수를 quosure 리스트로 변환하여 동적으로 매핑.
-- `!!`: quosure를 평가하여 실제 값을 반환.
-- `!!!`: 여러 quosure를 한 번에 풀어서 함수에 전달.
+-   `enquo()`: 단일 변수를 quosure로 변환하여 안전하게 참조.
+-   `enquos()`: 다수의 변수를 quosure 리스트로 변환하여 동적으로 매핑.
+-   `!!`: quosure를 평가하여 실제 값을 반환.
+-   `!!!`: 여러 quosure를 한 번에 풀어서 함수에 전달.
 
 ## 개발 예시
-    -   `ggshort`: <a href="https://github.com/seokhoonj/ggshort/" target="_blank" rel="noopener noreferrer">github.com/seokhoonj/ggshort/</a>
 
-```r
+-   ggshort: <a href="https://github.com/seokhoonj/ggshort/blob/main/R/short.R" target="_blank" rel="noopener noreferrer">github.com/seokhoonj/ggshort/blob/main/R/short.R</a>
+
+``` r
 library(ggplot2)
 library(rlang)
 
@@ -180,6 +181,7 @@ ggbar(AutoCollision, x = Age, y = Claim_Count, fill = Vehicle_Use) +
   labs(title = "Auto Collision") +
   theme_view()
 ```
+
 ![alt text](../images/ggbar-auto-collision.png){: width="70%"}
 
 ## 결론

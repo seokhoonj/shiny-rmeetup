@@ -87,19 +87,19 @@ papago <- NULL
 실제로 `papagor`을 로드하면 다음과 같이 `papago` 클래스에 접근할 수 있습니다.
 
 ``` r
-# > library(papagor)
+> library(papagor)
 # Please register your app and get your client id and secret from website 'https://developers.naver.com/apps/#/register'.
 
-# > papagor:::papago
+> papagor:::papago
 # Module(papago) # module
 
-# > papagor:::papago$translator
+> papagor:::papago$translator
 # Module(papago.translator) # module
 
-# > papagor:::papago$translator$Translator
+> papagor:::papago$translator$Translator
 # <class 'papago.translator.Translator'> # class
 
-# > papagor:::papago$translator$Translator$translate
+> papagor:::papago$translator$Translator$translate
 # <function Translator.translate at 0x000000000000> # function
 ```
 

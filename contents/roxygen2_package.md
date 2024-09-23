@@ -120,15 +120,7 @@ subtract <- function(a, b) {
 - **`@import dplyr`**: `dplyr` 패키지를 패키지 전반에 걸쳐 가져옵니다.
 - **`@importFrom ggplot2 ggplot aes`**: `ggplot2` 패키지에서 `ggplot`과 `aes` 함수만 가져옵니다.
 
-### 8. `README.md` 및 기타 파일 문서화
-
-`roxygen2`는 R 함수 외에도 패키지의 `README.md`나 기타 설명 파일을 쉽게 관리할 수 있습니다. 예를 들어, `usethis::use_readme_md()`를 통해 `README.md` 파일을 생성한 후 이를 문서화 과정에 포함시킬 수 있습니다.
-
-```r
-usethis::use_readme_md()
-```
-
-### 9. 문서화와 테스트 자동화
+### 8. 문서화와 테스트 자동화
 
 `roxygen2`를 사용하면 문서화 작업이 단순해져 코드와 문서를 일관되게 유지할 수 있습니다. 특히 `devtools::document()` 명령어로 모든 문서를 자동으로 업데이트할 수 있어 편리합니다. 이 외에도 `testthat`과 연동하여 문서화와 테스트를 병행하면 더욱 신뢰성 있는 패키지를 개발할 수 있습니다.
 
