@@ -5,7 +5,7 @@ server <- function(input, output, session) {
   
   output$pkg_pt_tab_intro_pt <- renderSlickR({
     imgs <- list.files("images/intro/", pattern = ".png", full.names = TRUE)
-    slickR(imgs, width = "95%", height = 700)
+    slickR(obj = imgs, width = "95%", height = 600)
   })
   
   output$pkg_pt_tab_status_plot <- renderPlot({
