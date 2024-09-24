@@ -1,6 +1,6 @@
-## 2. 함수에서 Shiny App 실행 
-Module화가 진행되고 나면 Shiny 코드를 비교적 쉽게 해체하고 재사용 할 수 있습니다.
-다음은 CRAN의 Top 다운로드 패키지를 알아보는 간단한 Shiny 앱 함수의 예시입니다.
+## 2. 함수에서 `Shiny` App 실행 
+Module화가 진행되고 나면 `Shiny` 코드를 비교적 쉽게 해체하고 재사용 할 수 있습니다.
+다음은 CRAN의 Top 다운로드 패키지를 알아보는 간단한 `Shiny` App 함수의 예시입니다.
 
 ``` r
 plot_cran_top <- function(when = c("last-month", "last-week", "last-day"), 

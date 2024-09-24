@@ -1,6 +1,6 @@
-# R 패키지 개발 시 Shiny 사용법
+# R 패키지 개발 시 `Shiny` 사용법
 
-## 1. Shiny Module
+## 1. `Shiny` Module
 
 Shiny 모듈화는 코드 재사용성을 높이고 유지보수를 쉽게 만드는데 필수적입니다. 다음은 `selectInput` 드롭다운 메뉴에 대한 설명을 그 예로 하고 있습니다. 기본적으로 ui 함수에 적용될 `selectUI`와 server 함수에 포함될 `dynSelectServer`로 이루어져 있습니다. `selectServer`가 아닌 `dynSelectServer`인 이유는 인수에 따라 Reactive하게 움직이기 때문입니다.
 
