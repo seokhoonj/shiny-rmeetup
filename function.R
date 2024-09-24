@@ -33,7 +33,7 @@ conditionBox <- function(
 
 resultBox <- function(
     ...,
-    title = "생산성 향상을 위한 나만의 R 패키지 빌드", footer = NULL, status = "success",
+    title = "생산성 향상을 위한 나만의 R 패키지", footer = NULL, status = "success",
     solidHeader = TRUE, background = NULL,
     width = 13, height = NULL,
     collapsible = FALSE, collapsed = FALSE

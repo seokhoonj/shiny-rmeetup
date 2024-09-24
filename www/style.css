@@ -87,7 +87,8 @@
 }
 
 .skin-black .content {
-  padding-top: 60px;
+  /* padding-top: 60px; */
+  margin-top: 50px;
   background-color: transparent;
 } /* for fixed navbar */
 
