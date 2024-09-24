@@ -15,7 +15,7 @@
 R Meetup에서의 발표 자료입니다. 발표 자료는 KOSIS 패키지를 중심으로 R 패키지를 개발하는 과정을 포함합니다.
 
 1.  Introduction
-2.  Top Downloads
+2.  Status
 3.  Productivity
 4.  Environment
 5.  KOSIS

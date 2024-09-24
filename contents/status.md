@@ -1,10 +1,11 @@
 ## R 패키지 현황
+
 R 패키지는 R 프로그래밍 언어의 기능을 확장하는 다양한 도구와 함수 모음을 의미합니다. 현재 R 생태계에서 수많은 패키지가 다양한 분야에서 사용되고 있으며, 이들은 R 사용자의 연구와 분석 작업을 간소화하고 개선하는 데 중요한 역할을 하고 있습니다. R 패키지의 현황에 대해 주요한 측면을 아래에 설명드리겠습니다.
-  
+
 ### 1. 패키지의 수와 다양성
 
--   **CRAN (The Comprehensive R Archive Network)**: R 패키지의 대부분은 CRAN에서 관리됩니다. 2024년 기준으로 CRAN에는 19,000개 이상의 패키지가 등록되어 있으며, 이는 통계학, 데이터 과학, 생물정보학, 경제학 등 다양한 분야를 포괄합니다.
--   **Bioconductor**: 생명과학과 생물정보학 분야에 특화된 R 패키지들이 주로 포함되어 있으며, 게놈 분석, 시퀀싱 데이터 처리 등 생명과학 연구에 필수적인 도구들이 다수 존재합니다.
+-   **CRAN (The Comprehensive R Archive Network)**: R 패키지의 대부분은 CRAN에서 관리됩니다. 2024년 기준으로 CRAN에는 19,000개 이상의 패키지가 등록되어 있으며, 이는 통계학, 데이터 과학, 생물정보학, 경제학 등 다양한 분야를 포괄합니다. (예시: <a href= "https://cran.r-project.org/web/packages/ecos/index.html" target="_blank" rel="noopener noreferrer">ecos</a>)
+-   **Bioconductor**: 생명과학과 생물정보학 분야에 특화된 R 패키지들이 주로 포함되어 있으며, 게놈 분석, 시퀀싱 데이터 처리 등 생명과학 연구에 필수적인 도구들이 다수 존재합니다. (예시: <a href= "https://www.bioconductor.org/packages/release/bioc/html/qmtools.html" target="_blank" rel="noopener noreferrer">qmtools</a>)
 -   **GitHub**: 많은 개발자들이 CRAN에 등록하지 않은 최신 버전의 패키지나 실험적인 패키지를 GitHub에 배포하고 있습니다. 이는 R 커뮤니티가 빠르게 변화하는 연구 요구에 대응할 수 있게 합니다.
 
 ### 2. 인기 패키지

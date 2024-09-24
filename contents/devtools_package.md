@@ -91,7 +91,17 @@ devtools::lint()
 
 이 명령어는 R 코드에서 권장되지 않는 스타일이나 잠재적인 버그를 찾아줍니다.
 
-### 9. 패키지 배포
+### 9. 패키지 검사
+
+이 함수는 CRAN에 제출되기 전에 모든 테스트를 통과하는지 확인하는 데 사용됩니다. 패키지의 품질과 호환성을 보장하기 위해 여러 가지 검사를 수행합니다.
+
+```r
+devtools::check()
+```
+
+이 명령어는 CRAN 제출 적합성을 종합적으로 평가합니다.
+
+### 10. 패키지 배포
 
 패키지를 개발한 후, CRAN 또는 GitHub에 배포할 수 있습니다.
 
@@ -107,7 +117,7 @@ devtools::release()
 devtools::install_github("username/repository")
 ```
 
-### 10. 패키지 의존성 관리
+### 11. 패키지 의존성 관리
 
 `devtools`는 패키지 의존성을 쉽게 관리할 수 있습니다. `use_package()` 명령어는 패키지의 `DESCRIPTION` 파일에 필요한 패키지를 자동으로 추가합니다.
 
@@ -117,7 +127,7 @@ devtools::use_package("dplyr")
 
 이 명령어는 패키지가 `dplyr`에 의존하고 있음을 `DESCRIPTION` 파일에 명시합니다.
 
-### 11. 예제 데이터 추가
+### 12. 예제 데이터 추가
 
 패키지에 예제 데이터를 추가하려면, `use_data()` 함수를 사용하여 데이터를 패키지에 포함시킬 수 있습니다.
 
@@ -127,7 +137,7 @@ usethis::use_data(my_data)
 
 이 명령어는 `data/` 디렉토리에 데이터를 저장하고, 패키지에 내장된 데이터로 사용할 수 있게 합니다.
 
-### 12. Git과 GitHub 연동
+### 13. Git과 GitHub 연동
 
 `devtools`는 Git과 GitHub 연동 작업도 쉽게 도와줍니다. `use_git()` 함수를 사용하여 Git을 초기화하고, `use_github()` 함수를 통해 패키지를 GitHub에 배포할 수 있습니다.
 
@@ -136,7 +146,7 @@ usethis::use_git()    # Git 초기화
 usethis::use_github() # GitHub 저장소 생성 및 연동
 ```
 
-### 13. 패키지 자동화 도구
+### 14. 패키지 자동화 도구
 
 `devtools`는 CI(Continuous Integration) 도구와 연동하여 패키지 빌드 및 테스트 작업을 자동화할 수 있습니다. GitHub Actions를 사용하여 R CMD check를 자동으로 실행할 수 있도록 설정할 수 있습니다.
 
@@ -157,6 +167,7 @@ usethis::use_github_action("check-standard")
 - **패키지 문서화**: `document()`
 - **패키지 설치**: `install()`
 - **코드 스타일 검사**: `lint()`
+- **패키지 검사**: `check()`
 - **패키지 배포**: `release()`, `install_github()`
 - **의존성 관리**: `use_package()`
 - **Git/GitHub 연동**: `use_git()`, `use_github()`
